@@ -1,8 +1,10 @@
 
 import './App.css';
+
 import Sidebar from './components/sidebar/Sidebar';
 import MainDash from './components/MainDash/MainDash';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
         </Routes>
       </Sidebar>
     </BrowserRouter>
+
+
   );
 };
 
