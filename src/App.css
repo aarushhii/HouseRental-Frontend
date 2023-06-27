@@ -4,7 +4,7 @@
   padding:0;
   text-decoration: none;
   font-family: 'Inter', sans-serif;
-  box-sizing: border-boxs;
+  box-sizing: border-box;
 }
 
 .container{
@@ -197,8 +197,7 @@ nav {
   .home-bannerImage-container {
     max-width: 450px;
   }
-  .home-banner-container,
-  .about-section-container {
+  .home-banner-container {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;

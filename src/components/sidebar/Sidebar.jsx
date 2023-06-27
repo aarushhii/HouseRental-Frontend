@@ -4,8 +4,9 @@ import React from 'react'
 import { useState } from 'react';
 import {
     FaTh,
-    FaBars,
     FaUserAlt,
+    FaBars,
+    FaFile
    
 }from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
@@ -21,11 +22,16 @@ const Sidebar = ({children}) => {
       icon: <FaTh />
     },
     {
-      path: "/Tenants",
-      name: "Tenants",
+      path: "/Properties",
+      name: "Properties",
       icon: <FaUserAlt />
     },
-
+     {
+       path: "/Complaints",
+      name: "Complaints",
+      icon: <FaFile />
+     
+     },
   ]
 
   return (

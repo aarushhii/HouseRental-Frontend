@@ -10,10 +10,12 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import MainDash from './pages/MainDash/MainDash';
+;
 const router =createBrowserRouter([
   {
     path:"/",
-    element:<SignIn/>,
+    element:<MainDash/>,
   },
   {
     path:"/signup",
