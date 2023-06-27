@@ -1,20 +1,23 @@
+
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Sidebar from './components/sidebar';
-// import navbarComp from './components/navbarComp';
+import Sidebar from './components/sidebar/Sidebar';
+import MainDash from './components/MainDash/MainDash';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 function App() {
   return (
- <div className="App">
-  <Sidebar/>
-
-    
-    
-  </div>
- 
-
+    <BrowserRouter>
+      <Sidebar>
+        <Routes>
+          <Route path="/" element={<MainDash />} />
+          <Route path="/Dashboard" element={<MainDash />} />
+          {/* <Route path="/Tenants" element={<Tenants />} /> */}
+        </Routes>
+      </Sidebar>
+    </BrowserRouter>
   );
-}
+};
+
 
 export default App;
