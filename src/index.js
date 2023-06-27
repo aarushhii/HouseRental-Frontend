@@ -11,6 +11,7 @@ import {
   Link,
 } from "react-router-dom";
 import MainDash from './pages/MainDash/MainDash';
+import Property from './pages/Property/Property';
 ;
 const router =createBrowserRouter([
   {
@@ -20,8 +21,11 @@ const router =createBrowserRouter([
   {
     path:"/signup",
     element:<SignUp/>
+  },
+  {
+    path:"/property",
+    element:<Property />
   }
-  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
