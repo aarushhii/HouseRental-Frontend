@@ -46,8 +46,6 @@ export default function SignIn() {
     };
 
     login(userData);
-
-    window.location.pathname="/dashboard";
   };
 
   return (

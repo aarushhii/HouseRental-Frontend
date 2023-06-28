@@ -34,7 +34,8 @@ export const AuthProvider = ({ children }) => {
                  localStorage.setItem("user", JSON.stringify(data));
                  setUser(data);
                  console.log("Login successful!", data);
-                 navigate("/home");
+                navigate("/dashboard");
+
              })
              .catch((error) => {
                  console.error("Error:", error);
@@ -60,7 +61,7 @@ export const AuthProvider = ({ children }) => {
             })
             .then((data) => {
                 console.log("Registration successful!", data);
-                navigate("/login");
+                navigate("/signin");
             })
             .catch((error) => {
                 console.error("Error:", error);
