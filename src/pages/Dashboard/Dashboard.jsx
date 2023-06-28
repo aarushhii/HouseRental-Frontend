@@ -1,7 +1,6 @@
-import NavBar from '../../components/NavBar-Main/Navbar'
+import NavBar from "../../components/NavBar-Main/Navbar";
 import React from 'react'
 import '../../App.css';
-import { FaHome } from "react-icons/fa";
 
 
 function Dashboard() {

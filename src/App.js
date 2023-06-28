@@ -9,7 +9,7 @@ import AddProperty from "./pages/Forms/addProperty/addProperty";
 import RaiseComplaint from "./pages/Forms/raiseComplaint/raiseComplaint";
 import AddTenant from "./pages/Forms/AddTenant/addTenant";
 import { AuthProvider } from "./context/AuthContext";
-import { Dashboard } from '@mui/icons-material';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 
 function App() {

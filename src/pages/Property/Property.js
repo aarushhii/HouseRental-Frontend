@@ -8,7 +8,7 @@ const Property = () => {
         <div >
       <NavBar />
         <>
-         
+
                 <h2 className="px-5 pt-5">Properties</h2>
                 <div className="row px-5 gx-3">
                     <div className="col-sm-12 col-md-6 col-lg-4 mb-3 my-3">
