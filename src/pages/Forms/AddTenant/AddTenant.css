@@ -35,6 +35,9 @@
     border-radius: 4px;
     transition: border-color 0.3s ease;
   }
+  #message{
+    padding:50px;
+  }
   
   .my-form .form-control:focus {
     outline: none;

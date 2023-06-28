@@ -27,6 +27,8 @@ const NavBar = () => {
                     id="basic-nav-dropdown" 
                     alignRight 
                     className="profile-dropdown">
+                        <NavDropdown.Item href="/addProperty">Add Property</NavDropdown.Item>
+                        <NavDropdown.Item href="/raiseComplaint">Raise Complaint</NavDropdown.Item>
                         <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
                         <NavDropdown.Item href="/reset-password">Reset Password</NavDropdown.Item>
                     </NavDropdown>
