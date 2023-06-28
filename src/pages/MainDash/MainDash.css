@@ -1,11 +1,7 @@
 
-.Main{
-  margin:0;
-  
-}
 .dashboard {
     margin-top: 0px;
-    padding-bottom: 50px;
+   
   }
   .dashboard__wrapper{
     padding:15px;
@@ -16,7 +12,7 @@
   }
   
 .single__card {
-    padding: 20px;
+    padding: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,7 +21,7 @@
   }
   
   .single__card:nth-child(1) {
-    background: #bd75f4
+    background: #bd75f4;
   }
   
   .single__card:nth-child(2) {
@@ -48,9 +44,9 @@
     background: #b2d9ff;
   }
   
-  .card__content h4 {
+  .card__content h3 {
     color: var(--heading-color);
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 400;
   }
   
@@ -72,4 +68,3 @@
     row-gap: 3rem;
     column-gap: 2rem;
   }
-

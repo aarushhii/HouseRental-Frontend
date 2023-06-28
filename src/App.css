@@ -9,6 +9,8 @@
 
 .container{
   display:flex;
+  max-width:1800px;
+  padding: 0;
 }
 main{
   width: 100%;
@@ -56,7 +58,7 @@ img {
   max-width: 100%;
   height: auto;
 }
-.page {
+.App {
   min-height: 100vh;
   width: 85vw;
   max-width: 1900px;

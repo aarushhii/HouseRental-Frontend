@@ -3,6 +3,7 @@ import './MainDash.css'
 import Cards from "../../components/Cards";
 import Sidebar from '../../components/sidebar/Sidebar';
 
+
 const HouseObj = {
   title: "Houses",
   totalNumber: "5",
@@ -18,7 +19,7 @@ const TenantObj = {
 const PaymentObj = {
   title: "Payments",
   totalNumber: "82",
-  // icon: "ri-user-line",
+  
 };
 
 const VacantObj = {
@@ -30,12 +31,12 @@ const VacantObj = {
 const RentObj = {
   title: "Rent collected",
   totalNumber: "21000",
-  // icon: "ri-timer-flash-line",
+
 };
 const PendingObj = {
   title: "Rend updaid",
   totalNumber: "2",
-  // icon: "ri-timer-flash-line",
+  
 };
 
 const MainDash = () => {
@@ -52,7 +53,7 @@ const MainDash = () => {
             <Cards item={RentObj} />
             <Cards item={VacantObj} />
             <Cards item={PendingObj} />
-          </div>
+          </div> 
         </div>
         </div>
       </Sidebar>
