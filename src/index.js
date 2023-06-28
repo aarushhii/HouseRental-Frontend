@@ -7,7 +7,6 @@ import SignUp from './pages/Login/signup';
 import AddProperty from './pages/Forms/addProperty/addProperty';
 import MainDash from './components/MainDash/MainDash';
 import Property from './pages/Property/Property';
-import Complaints from './pages/Complaints/Complaints';
 import AddTenant from './pages/Forms/AddTenant/addTenant';
 import ComplaintsPage from './pages/Complaint/ComplaintsPage';
 import {
@@ -60,11 +59,7 @@ const router =createBrowserRouter([
     element:<RaiseComplaint />
 
   },
-  {
-    path:"/complaint",
-    element:<Complaints />
 
-  },
   {
     path:"/addtenant",
     element:<AddTenant />
