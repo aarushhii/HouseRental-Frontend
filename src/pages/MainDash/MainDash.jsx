@@ -1,7 +1,9 @@
 import React from 'react'
 import './MainDash.css'
 import Cards from "../../components/Cards";
-import Sidebar from '../../components/sidebar/Sidebar';
+// import Sidebar from '../../components/sidebar/Sidebar';
+import NavBar from '../../components/NavBar-Main/Navbar';
+import '../../components/NavBar-Main/NavBar.css'
 
 const HouseObj = {
   title: "Houses",
@@ -40,8 +42,11 @@ const PendingObj = {
 
 const MainDash = () => {
   return (
+    <div>
+      <NavBar />
+      <h2 className="px-5 pt-5">Properties</h2>
     <div className='Main'>
-      <Sidebar>
+      {/* <Sidebar> */}
     <div className="dashboard">
         <div className="dashboard__wrapper">
           <h1>Dashboard</h1>
@@ -55,8 +60,9 @@ const MainDash = () => {
           </div>
         </div>
         </div>
-      </Sidebar>
+      {/* </Sidebar> */}
     </div >
+    </div>
   );
 };
 export default MainDash;

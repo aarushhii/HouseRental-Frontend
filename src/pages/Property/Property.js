@@ -6,11 +6,13 @@ import NavBar from "../../components/NavBar-Main/Navbar";
 
 const Property = () => {
     return (
+        <div >
+      <NavBar />
         <>
             {/* <NavBar/> */}
-            <Sidebar>
+            {/* <Sidebar> */}
             <h2 className="px-5 pt-5">Properties</h2>
-            <div className="row px-5 gx-3">
+            <div className="row px-5 gx-3 " style={{ overflowY: 'hidden' }}>
                 <div className="col-sm-12 col-md-6 col-lg-4 mb-3 my-3">
                     <div className="card">
                         <div className="card-header d-flex">
@@ -92,8 +94,9 @@ const Property = () => {
                     </div>
                 </div>
             </div>
-            </Sidebar>
+            {/* </Sidebar> */}
         </>
+        </div>
     );
 };
 

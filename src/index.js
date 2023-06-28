@@ -15,6 +15,7 @@ import {
 
 import Property from './pages/Property/Property';
 import AddTenant from './pages/Forms/AddTenant/addTenant';
+import ComplaintsPage from './pages/Complaint/ComplaintsPage';
 
 const router =createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router =createBrowserRouter([
   {
     path:"/property",
     element:<Property />
+  },
+  {
+    path:"/complaints",
+    element:<ComplaintsPage />
   },
   {
     path:"/addtenant",

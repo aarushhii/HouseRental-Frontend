@@ -10,8 +10,8 @@ const NavBar = () => {
             <Navbar.Brand href="/dashboard">
                 <img
                     src={Logo}
-                    width="200"
-                    height="50"
+                    width="150"
+                    height="0"
                     className="d-inline-block align-top"
                     alt="Logo"
                 />
@@ -19,6 +19,9 @@ const NavBar = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
+                <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                <Nav.Link href="/property">Property</Nav.Link>
+                    <Nav.Link href="/complaints">Complaint</Nav.Link>
                     <NavDropdown 
                     title={<img src={Profile} alt="Profile" width="40" />} 
                     id="basic-nav-dropdown" 
