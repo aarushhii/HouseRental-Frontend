@@ -1,155 +1,116 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link to="/">
-        Home
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-// TODO remove, this demo shouldn't need to reset the theme.
-
-const defaultTheme = createTheme();
-
-export default function SignUp() {
-
-  const {signup}=useContext(AuthContext);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  import React, { useContext, useState } from 'react';
+  import { Link } from 'react-router-dom';
+  import { AuthContext } from '../../context/AuthContext';
+  import './SignUp.css';
+  import 'bootstrap/dist/css/bootstrap.min.css';
+  import 'bootstrap/dist/js/bootstrap.min.js';
   
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  
+  export default function SignUp() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+    const [confpassword, setconfpassword] = useState('');
+    const { signup } = useContext(AuthContext);
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
 
-    const userData = {
-        name: data.get("name"),
-        phone: data.get("phone"),
-        email: data.get("email"),
-        password: data.get("password"),
+      if (password !== confpassword) {
+        alert("Passwords do not match");
+        return;
+      }
+
+      const userData = {
+        name,
+        phone,
+        email,
+        password,
+      };
+      
+      signup(userData);
+      window.location.pathname = '/signin';
     };
-
-    signup(userData);
-
-    window.location.pathname="/signin";
-  };
-
-  return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} >
-                <TextField
-                  autoComplete="given-name"
-                  name="name"
-                  required
-                  fullWidth
-                  id="name"
-                  label="Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="phone"
-                  label="Phone Number"
-                  name="phone"
-                  autoComplete="phone"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid><Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="confpassword"
-                  label="Confirm Password"
-                  type="password"
-                  id="confpassword"
-                  autoComplete="new-password"
-                />
-              </Grid>
-              
-              
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign Up
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link to="/signin">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 5 }} />
-      </Container>
-    </ThemeProvider>
-  );
-}
+  
+    return (
+      <div>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col">
+            <div className="signup-form">
+              <h2 className="text-center">Sign up</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="name"
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                    placeholder="Name"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="phone"
+                    value={phone}
+                    onChange={(event) => setPhone(event.target.value)}
+                    placeholder="Phone Number"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    className="form-control"
+                    name="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    placeholder="Email Address"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="confpassword"
+                    value={confpassword}
+                    onChange={(event) => setconfpassword(event.target.value)}
+                    placeholder="Confirm Password"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <button type="submit" className="btn btn-primary btn-block">
+                    Sign Up
+                  </button>
+                </div>
+                <div className="text-center">
+                  Already have an account?{' '}
+                  <Link to="/signin">Sign in</Link>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    );
+  }
+  
