@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 
 import Property from './pages/Property/Property';
+import Complaints from './pages/Complaints/Complaints';
 import AddTenant from './pages/Forms/AddTenant/addTenant';
 import ComplaintsPage from './pages/Complaint/ComplaintsPage';
 
@@ -35,17 +36,28 @@ const router =createBrowserRouter([
     element:<SignIn/>
   },
   {
+    path:"/signin",
+    element:<SignIn/>
+  },
+  {
     path:"/property",
     element:<Property />
   },
   {
     path:"/complaints",
     element:<ComplaintsPage />
+
+  },
+  {
+    path:"/complaint",
+    element:<Complaints />
+
   },
   {
     path:"/addtenant",
     element:<AddTenant />
   }
+
 
 ]);
 
