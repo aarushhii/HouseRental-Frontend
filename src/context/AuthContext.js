@@ -13,13 +13,16 @@ export const AuthProvider = ({ children }) => {
 
 
      const login = (userData) => {
-         fetch("http://localhost:8080/api/landlord/login", {
-             method: "POST",
-             headers: {
-                 "Content-Type": "application/json",
-             },
-             body: JSON.stringify(userData),
-         })
+         fetch(
+             "https://houserentalapi-production.up.railway.app/api/landlord/login",
+             {
+                 method: "POST",
+                 headers: {
+                     "Content-Type": "application/json",
+                 },
+                 body: JSON.stringify(userData),
+             }
+         )
              .then((response) => {
                  if (response.ok) {
                      return response.json();
@@ -28,23 +31,26 @@ export const AuthProvider = ({ children }) => {
                  }
              })
              .then((data) => {
-                localStorage.setItem("user", JSON.stringify(data));
-                setUser(data);
+                 localStorage.setItem("user", JSON.stringify(data));
+                 setUser(data);
                  console.log("Login successful!", data);
-                    navigate("/home");
-                })
+                 navigate("/home");
+             })
              .catch((error) => {
                  console.error("Error:", error);
              });
      };
      const signup = (userData) => {
-        fetch("http://localhost:8080/api/landlord/add", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-        })
+        fetch(
+            "https://houserentalapi-production.up.railway.app/api/landlord/add",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userData),
+            }
+        )
             .then((response) => {
                 if (response.ok) {
                     return response.json(); // Parse the response body as JSON

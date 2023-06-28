@@ -10,7 +10,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-
+import { useContext } from 'react';
+import {AuthContext} from "../../context/AuthContext"
 
 
 function Copyright(props) {
@@ -31,13 +32,21 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  
+  const {login} = useContext(AuthContext);
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    
+    const userData = {
+        email: data.get("email"),
+        password: data.get("password"),
+    };
+
+    login(userData);
+
     window.location.pathname="/dashboard";
   };
 
@@ -57,7 +66,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Landlord Log in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField

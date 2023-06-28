@@ -10,6 +10,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+
 
 function Copyright(props) {
   return (
@@ -29,13 +32,26 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+
+  const {signup}=useContext(AuthContext);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+  
     console.log({
       email: data.get('email'),
       password: data.get('password'),
     });
+
+    const userData = {
+        name: data.get("name"),
+        phone: data.get("phone"),
+        email: data.get("email"),
+        password: data.get("password"),
+    };
+
+    signup(userData);
 
     window.location.pathname="/signin";
   };
@@ -63,10 +79,10 @@ export default function SignUp() {
               <Grid item xs={12} >
                 <TextField
                   autoComplete="given-name"
-                  name="Name"
+                  name="name"
                   required
                   fullWidth
-                  id="Name"
+                  id="name"
                   label="Name"
                   autoFocus
                 />

@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "../../components/sidebar/Sidebar";
 import { Link } from "react-router-dom";
 import '../../App.css';
 import NavBar from "../../components/NavBar-Main/Navbar";
