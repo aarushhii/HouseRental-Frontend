@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './ComplaintsPage.css';
 import ComplaintCard from '../../components/ComplaintCard';
-import Sidebar from '../../components/sidebar/Sidebar';
 import NavBar from '../../components/NavBar-Main/Navbar'
 
 const ComplaintPage = () => {
@@ -39,7 +38,6 @@ const ComplaintPage = () => {
     <div>
       <NavBar />
       <div className="main-content">
-        {/* <Sidebar activePage="complaints" > */}
         <h2 className="px-5 pt-5">Complaints</h2>
     <div className="complaints-page">
       <div className="tabs">
@@ -70,7 +68,6 @@ const ComplaintPage = () => {
         ))}
       </div>
     </div>
-    {/* </Sidebar> */}
     </div>
     </div>
   );

@@ -12,6 +12,9 @@
   max-width:1800px;
   padding: 0;
 }
+.contents{
+ margin: auto;
+}
 main{
   width: 100%;
   padding: 0px;
@@ -166,13 +169,6 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.secondary-button svg {
-  margin-left: 0.75rem;
-  font-size: 1.5rem;
-}
-.secondary-button:hover {
-  background-color: #e48f0f;
 }
 
 @media (max-width: 1000px) {
