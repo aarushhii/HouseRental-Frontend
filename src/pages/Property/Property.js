@@ -1,10 +1,14 @@
 import React from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { Link } from "react-router-dom";
+import '../../App.css';
+import NavBar from "../../components/NavBar-Main/Navbar";
 
 const Property = () => {
     return (
         <>
+            {/* <NavBar/> */}
+            <Sidebar>
             <h2 className="px-5 pt-5">Properties</h2>
             <div className="row px-5 gx-3">
                 <div className="col-sm-12 col-md-6 col-lg-4 mb-3 my-3">
@@ -21,7 +25,7 @@ const Property = () => {
                             <p className="card-text">
                                 Delhi <br /> 44-B new Delhi near Vasant Vihar
                             </p>
-                            <Link to="#" className="btn btn-primary">
+                            <Link to="/addtenant" className="btn btn-primary">
                                 Add Tenant here
                             </Link>
                         </div>
@@ -61,7 +65,7 @@ const Property = () => {
                             <p className="card-text">
                                 Delhi <br /> 44-B new Delhi near Vasant Vihar
                             </p>
-                            <Link to="#" className="btn btn-primary">
+                            <Link to="/addtenant" className="btn btn-primary">
                                 Add Tenant here
                             </Link>
                         </div>
@@ -88,6 +92,7 @@ const Property = () => {
                     </div>
                 </div>
             </div>
+            </Sidebar>
         </>
     );
 };

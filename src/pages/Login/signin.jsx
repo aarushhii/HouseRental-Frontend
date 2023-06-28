@@ -14,6 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 
+
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -39,7 +41,7 @@ export default function SignIn() {
       email: data.get('email'),
       password: data.get('password'),
     });
-    window.location.pathname="/signup";
+    window.location.pathname="/dashboard";
   };
 
   return (

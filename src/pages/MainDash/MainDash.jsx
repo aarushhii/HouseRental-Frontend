@@ -40,8 +40,9 @@ const PendingObj = {
 
 const MainDash = () => {
   return (
-    <div className="dashboard">
+    <div className='Main'>
       <Sidebar>
+    <div className="dashboard">
         <div className="dashboard__wrapper">
           <h1>Dashboard</h1>
           <div className="dashboard__cards">
@@ -52,6 +53,7 @@ const MainDash = () => {
             <Cards item={VacantObj} />
             <Cards item={PendingObj} />
           </div>
+        </div>
         </div>
       </Sidebar>
     </div >

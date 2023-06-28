@@ -1,5 +1,5 @@
-
 import React from 'react'
+import '../../App.css';
 
 import { useState } from 'react';
 import {
@@ -17,17 +17,17 @@ const Sidebar = ({children}) => {
   const toggle = () => setIsOpen(!isOpen);
   const menuItem = [
     {
-      path: "/",
+      path: "/dashboard",
       name: "Dashboard",
       icon: <FaTh />
     },
     {
-      path: "/Properties",
+      path: "/property",
       name: "Properties",
       icon: <FaUserAlt />
     },
      {
-       path: "/Complaints",
+       path: "/complaints",
       name: "Complaints",
       icon: <FaFile />
      

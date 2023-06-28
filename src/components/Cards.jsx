@@ -10,7 +10,7 @@ const Cards = (props) => {
       </div>
 
       <span className="card__icon">
-        <i class={icon}></i>
+        <i className={icon}></i>
       </span>
     </div>
   );

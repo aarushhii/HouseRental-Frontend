@@ -40,7 +40,7 @@ export default function SignUp() {
       password: data.get('password'),
     });
 
-    window.location.pathname="/";
+    window.location.pathname="/signin";
   };
 
   return (
@@ -63,25 +63,25 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} >
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="Name"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="Name"
+                  label="Name"
                   autoFocus
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="phone"
+                  label="Phone Number"
+                  name="phone"
+                  autoComplete="phone"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -104,7 +104,18 @@ export default function SignUp() {
                   id="password"
                   autoComplete="new-password"
                 />
+              </Grid><Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="confpassword"
+                  label="Confirm Password"
+                  type="password"
+                  id="confpassword"
+                  autoComplete="new-password"
+                />
               </Grid>
+              
               
             </Grid>
             <Button
@@ -117,7 +128,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to="/">
+                <Link to="/signin">
                   Already have an account? Sign in
                 </Link>
               </Grid>

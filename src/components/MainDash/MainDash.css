@@ -1,7 +1,8 @@
 .dashboard {
-    margin-top: 100px;
-    padding: 0px 30px;
-    padding-bottom: 50px;
+  margin:0px;
+  padding:0;
+  text-decoration: none;
+  margin-left: 0;
   }
   
 .single__card {

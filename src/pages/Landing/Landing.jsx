@@ -1,8 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Navbar from '../../components/Navbar';
 import BannerImage from "../../Assets/home-banner-image.png";
+// import { AuthContext } from "../context/AuthContext";
 
 const Landing= () => {
+
     return (
         <div className="home-container">
           <Navbar />

@@ -1,6 +1,8 @@
 import React from 'react'
 import './MainDash.css'
+import '../../App.css';
 import Cards from "../Cards";
+import Sidebar from '../sidebar/Sidebar';
 
 
 const HouseObj = {
@@ -29,7 +31,9 @@ const RentObj = {
 
 const MainDash = () => {
   return (
+
     <div className="dashboard">
+      <Sidebar>
       <div className="dashboard__wrapper">
         <div className="dashboard__cards">
           <Cards item={HouseObj} />
@@ -37,8 +41,9 @@ const MainDash = () => {
           <Cards item={ClientObj} />
           <Cards item={RentObj} />
         </div>
-
+      
       </div>
+      </Sidebar>
     </div>
   );
 };

@@ -2,20 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import SignIn from './pages/signin';
-import SignUp from './pages/signup';
+import SignIn from './pages/Login/signin';
+import SignUp from './pages/Login/signup';
+import addProperty from './pages/Forms/addProperty';
+import MainDash from './components/MainDash/MainDash';
 import {
   createBrowserRouter,
   RouterProvider,
   Route,
   Link,
 } from "react-router-dom";
-import MainDash from './pages/MainDash/MainDash';
+
 import Property from './pages/Property/Property';
-;
+import AddTenant from './pages/Forms/AddTenant/addTenant';
+
 const router =createBrowserRouter([
   {
     path:"/",
+    element:<App/>,
+  },
+  {
+    path:"/dashboard",
     element:<MainDash/>,
   },
   {
@@ -23,9 +30,18 @@ const router =createBrowserRouter([
     element:<SignUp/>
   },
   {
+    path:"/signin",
+    element:<SignIn/>
+  },
+  {
     path:"/property",
     element:<Property />
+  },
+  {
+    path:"/addtenant",
+    element:<AddTenant />
   }
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

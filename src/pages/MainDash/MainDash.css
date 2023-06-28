@@ -1,3 +1,8 @@
+
+.Main{
+  margin:0;
+  
+}
 .dashboard {
     margin-top: 0px;
     padding-bottom: 50px;
@@ -67,3 +72,4 @@
     row-gap: 3rem;
     column-gap: 2rem;
   }
+
