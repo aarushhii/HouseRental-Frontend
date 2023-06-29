@@ -1,68 +1,120 @@
 import React, { useState } from 'react';
 import '../AddTenant/AddTenant.css';
 import NavBar from '../../../components/NavBar-Main/Navbar';
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
-const AddProperty = ({ landlordId }) => {
-  const [name, setName] = useState('');
-  const [email, setAdress] = useState('');
-  const [password, setRent] = useState('');
+const AddProperty = () => {
+  const [data, setData] = useState({
+      name: "",
+      type: "",
+      city: "",
+      address: "",
+      rent: "",
+  });
 
-
-  const handleSubmit = (e) => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+  
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Here you can perform any actions with the form data, such as submitting it to a server.
-
-    // Clear the form fields
-    setName('');
-    setAdress('');
-    setRent('');
-
+    console.log(data.name+data.type+data.city+data.address+data.rent+user.id);
+    const response = await fetch(
+        `https://houserentalapi-production.up.railway.app/api/property/add`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: data.name,
+                type: data.type,
+                city: data.city,
+                address: data.address,
+                rent: data.rent,
+                ownerId: user.id,
+            }),
+        }
+    );
+        const dataJson = await response.json();
+        console.log(dataJson);
+        setData({ name: "", type: "", city: "", address: "", rent: "" });
+        navigate("/property");   
   };
 
   return (
-    <div><NavBar/>
-    <div className="form-container">
-      <h2 className="form-title">Add Property</h2>
-      <form onSubmit={handleSubmit} className="my-form">
-        
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="adress">Adress:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="adress"
-            value={email}
-            onChange={(e) => setAdress(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="rent">Password:</label>
-          <input
-            type="number"
-            className="form-control"
-            id="rent"
-            value={password}
-            onChange={(e) => setRent(e.target.value)}
-            required
-          />
-        </div>
-       
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
-    </div>
-    </div>
+      <div>
+          <NavBar />
+          <div className="form-container">
+              <h2 className="form-title">Add Property</h2>
+              <form onSubmit={handleSubmit} className="my-form">
+                  <div className="form-group">
+                      <label htmlFor="name">Name:</label>
+                      <input
+                          type="text"
+                          className="form-control"
+                          id="name"
+                          name="name"
+                          onChange={handleChange}
+                          required
+                      />
+                  </div>
+                  <div className="form-group">
+                      <label htmlFor="type">Type:</label>
+                      <input
+                          type="text"
+                          className="form-control"
+                          id="type"
+                          name="type"
+                          onChange={handleChange}
+                          required
+                      />
+                  </div>
+                  <div className="form-group">
+                      <label htmlFor="city">City:</label>
+                      <input
+                          type="text"
+                          className="form-control"
+                          id="city"
+                          name="city"
+                          onChange={handleChange}
+                          required
+                      />
+                  </div>
+                  <div className="form-group">
+                      <label htmlFor="address">Address:</label>
+                      <input
+                          type="text"
+                          className="form-control"
+                          id="address"
+                          name="address"
+                          onChange={handleChange}
+                          required
+                      />
+                  </div>
+                  <div className="form-group">
+                      <label htmlFor="rent">Rent:</label>
+                      <input
+                          type="number"
+                          className="form-control"
+                          id="rent"
+                          name="rent"
+                          onChange={handleChange}
+                          required
+                      />
+                  </div>
+
+                  <button type="submit" className="btn btn-primary">
+                      Submit
+                  </button>
+              </form>
+          </div>
+      </div>
   );
 };
 

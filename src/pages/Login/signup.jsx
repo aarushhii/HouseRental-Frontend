@@ -30,7 +30,6 @@
       };
       
       signup(userData);
-      window.location.pathname = '/signin';
     };
   
     return (
