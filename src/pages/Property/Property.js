@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Property = () => {
 
     const [data, setData] = useState([]);
+    const [tenant, setTenant] = useState([]);
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -20,7 +21,14 @@ const Property = () => {
             .then((res) => res.json())
             .then((d) => setData(d));
     };
-
+    const fetchTenant = () => {
+        let apiUrl = `https://houserentalapi-production.up.railway.app/api/landlord/get/tenants/${user.id}`;
+        return fetch(apiUrl, {
+            method: "GET",
+        })
+            .then((res) => res.json())
+            .then((d) => setTenant(d));
+    };
     const handleAddTenant = (e, propertyIdForTenant) =>{
         e.preventDefault();
         navigate("/addtenant", { state: { propertyId: propertyIdForTenant } });
@@ -28,6 +36,7 @@ const Property = () => {
 
     useEffect(() => {
         fetchInfo();
+        fetchTenant();
     }, []);
 
     return (
@@ -70,9 +79,24 @@ const Property = () => {
                                                 {dataObj.address}
                                             </p>
                                             {dataObj.tenantId ? (
-                                                <Link className="btn btn-primary">
-                                                    Tenant : {dataObj.tenantId}
-                                                </Link>
+                                                <>
+                                                Tenant : {dataObj.tenantId}
+                                                _________________________________________________
+                                                {tenant
+                                                    .filter((tenantObj) => tenantObj.propertyId === dataObj.id)
+                                                    .map((filteredTenant, index2) => (
+                                                      <ul key={index2}>
+                                                        <li>id- {filteredTenant.id}</li>
+                                                        <li>name- {filteredTenant.name}</li>
+                                                        <li>email- {filteredTenant.email}</li>
+                                                        <li>phone- {filteredTenant.phone}</li>
+                                                        <li>rentpaid- {filteredTenant.rentPaid?(<>Yes</>):(<>No</>)}</li>
+                                                        <li>rentdue- {filteredTenant.rentDue}</li>
+                                                      </ul>
+                                                    ))}
+
+                                                </>
+
                                             ) : (
                                                 <Link
                                                     onClick={(e) =>
