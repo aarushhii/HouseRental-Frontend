@@ -45,7 +45,6 @@
                     type="text"
                     className="form-control"
                     name="name"
-                    value={name}
                     onChange={(event) => setName(event.target.value)}
                     placeholder="Name"
                     required
@@ -56,7 +55,6 @@
                     type="text"
                     className="form-control"
                     name="phone"
-                    value={phone}
                     onChange={(event) => setPhone(event.target.value)}
                     placeholder="Phone Number"
                     required
@@ -67,7 +65,6 @@
                     type="email"
                     className="form-control"
                     name="email"
-                    value={email}
                     onChange={(event) => setEmail(event.target.value)}
                     placeholder="Email Address"
                     required
@@ -78,7 +75,6 @@
                     type="password"
                     className="form-control"
                     name="password"
-                    value={password}
                     onChange={(event) => setPassword(event.target.value)}
                     placeholder="Password"
                     required
@@ -89,7 +85,6 @@
                     type="password"
                     className="form-control"
                     name="confpassword"
-                    value={confpassword}
                     onChange={(event) => setconfpassword(event.target.value)}
                     placeholder="Confirm Password"
                     required

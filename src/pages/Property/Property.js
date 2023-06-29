@@ -21,6 +21,11 @@ const Property = () => {
             .then((d) => setData(d));
     };
 
+    const handleAddTenant = (e, propertyIdForTenant) =>{
+        e.preventDefault();
+        navigate("/addtenant", { state: { propertyId: propertyIdForTenant } });
+    }
+
     useEffect(() => {
         fetchInfo();
     }, []);
@@ -65,15 +70,17 @@ const Property = () => {
                                                 {dataObj.address}
                                             </p>
                                             {dataObj.tenantId ? (
-                                                <Link
-                                                    to="/addtenant"
-                                                    className="btn btn-primary"
-                                                >
+                                                <Link className="btn btn-primary">
                                                     Tenant : {dataObj.tenantId}
                                                 </Link>
                                             ) : (
                                                 <Link
-                                                    to="/addtenant"
+                                                    onClick={(e) =>
+                                                        handleAddTenant(
+                                                            e,
+                                                            dataObj.id
+                                                        )
+                                                    }
                                                     className="btn btn-primary"
                                                 >
                                                     Add Tenant here
