@@ -195,7 +195,7 @@ const Property = () => {
                     })}
                 </>):
                 (
-                    <h3>No proreties yet</h3>
+                    <h3>No properties yet</h3>
                 )}
                 </div>
         </>
