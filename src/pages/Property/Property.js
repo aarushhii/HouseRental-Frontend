@@ -122,6 +122,7 @@ const Property = () => {
                                                 {tenant
                                                     .filter((tenantObj) => tenantObj.propertyId === dataObj.id)
                                                     .map((filteredTenant, index2) => (
+                                                        <>
                                                       <ul key={index2}>
                                                         <li>id- {filteredTenant.id}</li>
                                                         <li>name- {filteredTenant.name}</li>
@@ -130,18 +131,16 @@ const Property = () => {
                                                         <li>rentpaid- {filteredTenant.rentPaid?(<>Yes</>):(<>No</>)}</li>
                                                         <li>rentdue- {filteredTenant.rentDue}</li>
                                                       </ul>
-                                                    ))}
-                                                ___________________________________________________
-                                                {
-                                                    tenant.rentPaid?null:(
-
-                                                        <button className="btn btn-success" onClick={(e) =>
+                                                    ___________________________________________________
+                                                
+                                                    {filteredTenant.rentPaid?null :<button className="btn btn-success" onClick={(e) =>
                                                             handlePayRent(
                                                                 e,
                                                                 dataObj.tenantId
                                                                 )
-                                                            }>Mark Rent as Paid</button> 
-                                                    )}
+                                                            }>Mark Rent as Paid</button>}
+                                                    </>
+                                                    ))}
                                                 <button className="btn btn-warning" onClick={(e) =>
                                                         handleAddComplaint(
                                                             e,
