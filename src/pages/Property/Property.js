@@ -133,7 +133,7 @@ const Property = () => {
                                                     ))}
                                                 ___________________________________________________
                                                 {
-                                                    tenant.rentPaid?(
+                                                    tenant.rentPaid?null:(
 
                                                         <button className="btn btn-success" onClick={(e) =>
                                                             handlePayRent(
@@ -141,7 +141,7 @@ const Property = () => {
                                                                 dataObj.tenantId
                                                                 )
                                                             }>Mark Rent as Paid</button> 
-                                                    ):null}
+                                                    )}
                                                 <button className="btn btn-warning" onClick={(e) =>
                                                         handleAddComplaint(
                                                             e,
