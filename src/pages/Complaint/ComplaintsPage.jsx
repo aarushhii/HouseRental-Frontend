@@ -5,10 +5,9 @@ import NavBar from "../../components/NavBar-Main/Navbar";
 import { AuthContext } from "../../context/AuthContext";
 
 const ComplaintPage = () => {
-    const [activeTab, setActiveTab] = useState("incoming");
-    const [data, setData] = useState([]);
-    const [tenantNames, setTenantNames] = useState([]);
     const { user } = useContext(AuthContext);
+    const [data, setData] = useState([]);
+    const [tenant, setTenant] = useState([]);
     
     const fetchInfo = () => {
         let apiUrl = `https://houserentalapi-production.up.railway.app/api/notice/getall`;
@@ -18,48 +17,21 @@ const ComplaintPage = () => {
             .then((res) => res.json())
             .then((d) => setData(d));
     };
-    const fetchTenantName = (tenantId) => {
-        let apiUrl = `https://houserentalapi-production.up.railway.app/api/tenant/${tenantId}`;
+    const fetchTenant = () => {
+        let apiUrl = `https://houserentalapi-production.up.railway.app/api/tenant/getall`;
         return fetch(apiUrl, {
             method: "GET",
         })
             .then((res) => res.json())
-            .then((tenant) => {
-                // Store the fetched tenant name
-                setTenantNames((prevTenantNames) => ({
-                    ...prevTenantNames,
-                    [tenantId]: tenant.name,
-                }));
-            });
+            .then((d) => setTenant(d));
     };
-
+    const findTenantById = (id) => {
+        return tenant.find((tenantObj) => tenantObj.id === id);
+    };
     useEffect(() => {
-      fetchInfo();
-    // Fetch tenant names for all complaints
-    const tenantIds = data.map((complaint) => complaint.from);
-    tenantIds.forEach((tenantId) => {
-      fetchTenantName(tenantId);
-    });
-  }, [data]);
-
-    const handleTabClick = (tab) => {
-        setActiveTab(tab);
-    };
-
-    let fromName = ""; // Initialize fromName variable
-    let toName = ""; // Initialize fromName variable
-    const filteredComplaints = data.filter((complaint) => {
-        if (activeTab === "incoming") {
-            fromName = "" // Assign fromName to complaint.from
-            toName = user.name;
-            return complaint.to === user.id;
-        } else if (activeTab === "outgoing") {
-            fromName = user.name;
-            toName = "" // Assign fromName to user.name
-            return complaint.from === user.id;
-        }
-        return false;
-    });
+        fetchInfo();
+        fetchTenant();
+    }, [data,tenant]);
 
     return (
         <div>
@@ -67,33 +39,34 @@ const ComplaintPage = () => {
             <div className="main-content">
                 <h2 className="px-5 pt-5">Complaints</h2>
                 <div className="complaints-page">
-                    <div className="tabs">
-                        <button
-                            className={`tab ${
-                                activeTab === "incoming" ? "active" : ""
-                            }`}
-                            onClick={() => handleTabClick("incoming")}
-                        >
-                            Incoming
-                        </button>
-                        <button
-                            className={`tab ${
-                                activeTab === "outgoing" ? "active" : ""
-                            }`}
-                            onClick={() => handleTabClick("outgoing")}
-                        >
-                            Outgoing
-                        </button>
-                    </div>
                     <div className="complaints-container">
-                        {filteredComplaints.map((complaint) => (
-                            <ComplaintCard
-                                key={complaint.id}
-                                title={complaint.title}
-                                message={complaint.content}
-                                from={fromName?fromName:tenantNames[complaint.from]}
-                                to={toName?toName:tenantNames[complaint.to]}
-                            />
+                        {data.map((complaint) => (
+                            <>
+                                OUTGOING
+                                {findTenantById(complaint.to) && (
+                                    <ComplaintCard
+                                        key={complaint.id}
+                                        title={complaint.title}
+                                        message={complaint.content}
+                                        from={user.name}
+                                        to={findTenantById(complaint.to).name}
+                                    />
+                                )}
+                            </>
+                        ))}
+                        {data.map((complaint) => (
+                            <>
+                                INCOMMING
+                                {findTenantById(complaint.from) && (
+                                    <ComplaintCard
+                                        key={complaint.id}
+                                        title={complaint.title}
+                                        message={complaint.content}
+                                        from={findTenantById(complaint.from).name}
+                                        to={user.name}
+                                    />
+                                )}
+                            </>
                         ))}
                     </div>
                 </div>
