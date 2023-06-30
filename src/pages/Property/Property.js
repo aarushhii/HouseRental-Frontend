@@ -38,7 +38,7 @@ const Property = () => {
 
     const handleAddComplaint=(e,tenantId)=>{
         e.preventDefault();
-        navigate("addcomplaint",{state:{from:user.id,to:tenantId}});
+        navigate("/raiseComplaint", { state: { to: tenantId, from:user.id } });
     }
 
     const handleDeleteTenant=(e,tenantId)=>{

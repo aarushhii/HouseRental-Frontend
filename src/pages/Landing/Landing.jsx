@@ -1,10 +1,10 @@
 import React,{useContext} from 'react'
 import Navbar from '../../components/Navbar';
 import BannerImage from "../../Assets/home-banner-image.png";
+import { Link } from 'react-router-dom';
 // import { AuthContext } from "../context/AuthContext";
 
 const Landing= () => {
-
     return (
         <div className="home-container">
           <Navbar />
@@ -18,9 +18,9 @@ const Landing= () => {
               <p className="primary-text">
                View property and rent details, all in one place
               </p>
-              <button className="primary-button">
+              <Link to={"/property"} className="primary-button text-light">
                View Details
-              </button>
+              </Link>
             </div>
             <div className="home-image-section">
               <img src={BannerImage} alt="" />
