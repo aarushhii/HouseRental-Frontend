@@ -73,7 +73,8 @@ const Property = () => {
         <>
                 <h2 className="px-5 pt-5">Properties</h2>
                 <div className="row px-5 gx-3">
-
+                {data.length > 0 ? (
+                    <>
                     {data.map((dataObj,index)=>{
                         return (
                             <>
@@ -175,7 +176,10 @@ const Property = () => {
                             </>
                         );
                     })}
-                    
+                </>):
+                (
+                    <h3>No proreties yet</h3>
+                )}
                 </div>
         </>
         </div>
