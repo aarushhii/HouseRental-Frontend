@@ -51,6 +51,14 @@ const Property = () => {
             .then((d) => setTenant(d));
 
     }
+    const handlePayRent = (e, tenantId) => {
+        e.preventDefault();
+        let apiUrl = `https://houserentalapi-production.up.railway.app/api/tenant/paid/${tenantId}`;
+        return fetch(apiUrl, {
+            method: "POST",
+        })
+            .then((res) => res.json());
+    };
 
     const handleRemoveProperty=(e, propertyId)=>{
         e.preventDefault();
@@ -124,6 +132,16 @@ const Property = () => {
                                                       </ul>
                                                     ))}
                                                 ___________________________________________________
+                                                {
+                                                    tenant.rentPaid?(
+
+                                                        <button className="btn btn-success" onClick={(e) =>
+                                                            handlePayRent(
+                                                                e,
+                                                                dataObj.tenantId
+                                                                )
+                                                            }>Mark Rent as Paid</button> 
+                                                    ):null}
                                                 <button className="btn btn-warning" onClick={(e) =>
                                                         handleAddComplaint(
                                                             e,
