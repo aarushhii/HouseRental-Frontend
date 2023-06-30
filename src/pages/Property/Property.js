@@ -21,6 +21,7 @@ const Property = () => {
             .then((res) => res.json())
             .then((d) => setData(d));
     };
+
     const fetchTenant = () => {
         let apiUrl = `https://houserentalapi-production.up.railway.app/api/landlord/get/tenants/${user.id}`;
         return fetch(apiUrl, {
@@ -29,15 +30,42 @@ const Property = () => {
             .then((res) => res.json())
             .then((d) => setTenant(d));
     };
+    
     const handleAddTenant = (e, propertyIdForTenant) =>{
         e.preventDefault();
         navigate("/addtenant", { state: { propertyId: propertyIdForTenant } });
     }
 
+    const handleAddComplaint=(e,tenantId)=>{
+        e.preventDefault();
+        navigate("addcomplaint",{state:{from:user.id,to:tenantId}});
+    }
+
+    const handleDeleteTenant=(e,tenantId)=>{
+        e.preventDefault();
+        let apiUrl = `https://houserentalapi-production.up.railway.app/api/tenant/delete/${tenantId}`;
+        return fetch(apiUrl, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((d) => setTenant(d));
+
+    }
+
+    const handleRemoveProperty=(e, propertyId)=>{
+        e.preventDefault();
+        let apiUrl = `https://houserentalapi-production.up.railway.app/api/property/delete/${propertyId}`;
+        return fetch(apiUrl, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((d) => setData(d));
+    }
+
     useEffect(() => {
         fetchInfo();
         fetchTenant();
-    }, []);
+    }, [data, tenant]);
 
     return (
         <div >
@@ -94,10 +122,32 @@ const Property = () => {
                                                         <li>rentdue- {filteredTenant.rentDue}</li>
                                                       </ul>
                                                     ))}
+                                                ___________________________________________________
+                                                <button className="btn btn-warning" onClick={(e) =>
+                                                        handleAddComplaint(
+                                                            e,
+                                                            dataObj.tenantId
+                                                        )
+                                                    }>Raise Complaint</button>    
+                                                <button className="btn btn-danger" onClick={(e) =>
+                                                        handleDeleteTenant(
+                                                            e,
+                                                            dataObj.tenantId
+                                                        )
+                                                    }>Remove Tenant
+                                                </button>    
+                                                <button className="btn btn-danger" onClick={(e) =>
+                                                        handleRemoveProperty(
+                                                            e,
+                                                            dataObj.id
+                                                        )
+                                                    }>Remove Property
+                                                </button>   
 
                                                 </>
 
                                             ) : (
+                                                <>
                                                 <Link
                                                     onClick={(e) =>
                                                         handleAddTenant(
@@ -109,6 +159,15 @@ const Property = () => {
                                                 >
                                                     Add Tenant here
                                                 </Link>
+                                                <button className="btn btn-danger" onClick={(e) =>
+                                                        handleRemoveProperty(
+                                                            e,
+                                                            dataObj.id
+                                                        )
+                                                    }>
+                                                    Remove Property
+                                                </button>   
+                                                </>
                                             )}
                                         </div>
                                     </div>
