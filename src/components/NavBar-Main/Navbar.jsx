@@ -6,10 +6,13 @@ import './NavBar.css'; // Import the CSS file for NavBar styles
 import { AuthContext } from '../../context/AuthContext';
 
 const NavBar = () => {
-    const {user,logout}=useContext(AuthContext);
+    const {user,logout , tenantUser, tenantLogout}=useContext(AuthContext);
 
     const handleLogout = () =>{
         logout();
+    }
+    const handleTenantLogout = () =>{
+        tenantLogout();
     }
 
      if (user) {
@@ -48,7 +51,58 @@ const NavBar = () => {
             </Navbar.Collapse>
         </Navbar>
     );}
-
+    else if(tenantUser){
+        return (
+            <Navbar expand="lg" className="slim-navbar">
+                <Navbar.Brand href="/dashboard">
+                    <img
+                        src={Logo}
+                        width="150"
+                        height="0"
+                        className="d-inline-block align-top"
+                        alt="Logo"
+                    />
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ml-auto">
+                        <NavDropdown
+                            title={
+                                <div>
+                                    <img
+                                        src={Profile}
+                                        alt="Profile"
+                                        width="40"
+                                    />
+                                    <span className="profile-name">
+                                        {tenantUser.name}
+                                    </span>
+                                </div>
+                            }
+                            id="basic-nav-dropdown"
+                            alignRight
+                            className="profile-dropdown"
+                        >
+                            <NavDropdown.Item href="/raiseComplaint">
+                                Raise Complaint
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="/reset-password">
+                                Reset Password
+                            </NavDropdown.Item>
+                            <NavDropdown.Item>
+                                <button
+                                    onClick={handleTenantLogout}
+                                    className="btn btn-danger"
+                                >
+                                    Logout
+                                </button>
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        );
+    }
     else{
         return (
             <Navbar expand="lg" className="slim-navbar">
