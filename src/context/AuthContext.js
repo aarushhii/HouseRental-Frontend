@@ -106,10 +106,13 @@ export const AuthProvider = ({ children }) => {
     };
     const tenantLogout = () => {
         // Perform logout logic here and clear the user data
+         localStorage.setItem("tenant", null);
         setTenantUser(null);
+
     };
      const logout = () => {
          // Perform logout logic here and clear the user data
+         localStorage.setItem("user", null);
          setUser(null);
      };
      return (
