@@ -76,52 +76,56 @@ const AddTenant = ({ propertyId, landlordId }) => {
   return (
       <div>
           <NavBar />
-          <div className="form-container">
-              <h2 className="form-title">Add Tenant</h2>
+          <div className="mx-auto w-50 p-5 border border-3 mt-5">
+              <h2 className="text-center fw-semibold mb-5">Add Tenant</h2>
               <form onSubmit={handleSubmit} className="my-form">
-                  <div className="form-group">
-                      <label htmlFor="name">Name:</label>
+                  <div class="form-floating mb-3">
                       <input
                           type="text"
-                          className="form-control"
+                          class="form-control"
                           id="name"
                           name="name"
                           onChange={handleChange}
+                          placeholder="name@example.com"
                           required
                       />
+                      <label for="name">Name</label>
                   </div>
-                  <div className="form-group">
-                      <label htmlFor="email">Email:</label>
+                  <div class="form-floating mb-3">
                       <input
                           type="email"
-                          className="form-control"
+                          class="form-control"
                           id="email"
                           name="email"
                           onChange={handleChange}
+                          placeholder="name@example.com"
                           required
                       />
+                      <label for="name">Email</label>
                   </div>
-                  <div className="form-group">
-                      <label htmlFor="password">Password:</label>
+                  <div class="form-floating mb-3">
                       <input
-                          type="password"
-                          className="form-control"
+                          type="text"
+                          class="form-control"
                           id="password"
                           name="password"
                           onChange={handleChange}
+                          placeholder="name@example.com"
                           required
                       />
+                      <label for="name">Password</label>
                   </div>
-                  <div className="form-group">
-                      <label htmlFor="phone">Phone:</label>
+                  <div class="form-floating mb-3">
                       <input
-                          type="tel"
-                          className="form-control"
+                          type="text"
+                          class="form-control"
                           id="phone"
                           name="phone"
                           onChange={handleChange}
+                          placeholder="name@example.com"
                           required
                       />
+                      <label for="name">Phone</label>
                   </div>
                   <button type="submit" className="btn btn-primary">
                       Submit

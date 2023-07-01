@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../AddTenant/AddTenant.css'; // Import custom CSS file for styling
 import NavBar from '../../../components/NavBar-Main/Navbar';
 import { useEffect } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
@@ -49,47 +48,53 @@ const RaiseComplaint = ({ landlordId,tenantId }) => {
                   to: data.to,
                   from: data.from,
                   active: true,
-              }),
-          }
+                }),
+            }
     );
     const dataJson = await response.json();
     console.log(dataJson);
     setData({ title: "", content: "", to: "", from: "", active: "" });
     navigate("/complaints");
-  };
+};
 
   return (
       <div>
           <NavBar />
-          <div className="form-container">
-              <h2 className="form-title">Raise a Complaint</h2>
-              <form onSubmit={handleSubmit} className="my-form">
-                  <div className="form-group">
-                      <label htmlFor="title">Title:</label>
+          <div className="mx-auto w-50 p-5 border border-3 mt-5">
+              <h2 className="text-center fw-semibold mb-5">Raise Complaint</h2>
+              <form onSubmit={handleSubmit}>
+                  <div class="form-floating mb-3">
                       <input
                           type="text"
-                          className="form-control"
+                          class="form-control"
                           id="title"
                           name="title"
                           onChange={handleChange}
+                          placeholder="name@example.com"
                           required
                       />
+                      <label for="name">Title</label>
                   </div>
-                  <div className="form-group">
-                      <label htmlFor="message">Message:</label>
-                      <input
-                          type="message"
-                          className="form-control"
+                  <div class="form-floating mb-3">
+                      <textarea
+                          class="form-control"
+                          placeholder="Leave a comment here"
                           id="message"
                           name="message"
                           onChange={handleChange}
                           required
-                      />
+                      ></textarea>
+                      <label for="floatingTextarea">Comments</label>
                   </div>
 
-                  <button type="submit" className="btn btn-primary">
-                      Submit
-                  </button>
+                  <div className="form-group">
+                      <button
+                          type="submit"
+                          className="btn btn-primary btn-block"
+                      >
+                          Send
+                      </button>
+                  </div>
               </form>
           </div>
       </div>

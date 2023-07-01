@@ -50,65 +50,69 @@ const AddProperty = () => {
   return (
       <div>
           <NavBar />
-          <div className="form-container">
-              <h2 className="form-title">Add Property</h2>
+          <div className="mx-auto w-50 p-5 border border-3 mt-5">
+              <h2 className="text-center fw-semibold mb-5">Add Property</h2>
               <form onSubmit={handleSubmit} className="my-form">
-                  <div className="form-group">
-                      <label htmlFor="name">Name:</label>
+                  <div class="form-floating mb-3">
                       <input
                           type="text"
-                          className="form-control"
+                          class="form-control"
                           id="name"
                           name="name"
                           onChange={handleChange}
+                          placeholder="name@example.com"
                           required
                       />
+                      <label for="name">Name</label>
                   </div>
-                  <div className="form-group">
-                      <label htmlFor="type">Type:</label>
+                  <div class="form-floating mb-3">
                       <input
                           type="text"
-                          className="form-control"
+                          class="form-control"
                           id="type"
                           name="type"
                           onChange={handleChange}
+                          placeholder="name@example.com"
                           required
                       />
+                      <label for="name">Type</label>
                   </div>
-                  <div className="form-group">
-                      <label htmlFor="city">City:</label>
+                  <div class="form-floating mb-3">
                       <input
                           type="text"
-                          className="form-control"
+                          class="form-control"
                           id="city"
                           name="city"
                           onChange={handleChange}
+                          placeholder="name@example.com"
                           required
                       />
+                      <label for="name">City</label>
                   </div>
-                  <div className="form-group">
-                      <label htmlFor="address">Address:</label>
+                  <div class="form-floating mb-3">
                       <input
                           type="text"
-                          className="form-control"
+                          class="form-control"
                           id="address"
                           name="address"
                           onChange={handleChange}
+                          placeholder="name@example.com"
                           required
                       />
+                      <label for="name">Address</label>
                   </div>
-                  <div className="form-group">
-                      <label htmlFor="rent">Rent:</label>
+                  <div class="form-floating mb-3">
                       <input
                           type="number"
-                          className="form-control"
+                          class="form-control"
                           id="rent"
                           name="rent"
                           onChange={handleChange}
+                          placeholder="name@example.com"
                           required
                       />
+                      <label for="name">Rent</label>
                   </div>
-
                   <button type="submit" className="btn btn-primary">
                       Submit
                   </button>
