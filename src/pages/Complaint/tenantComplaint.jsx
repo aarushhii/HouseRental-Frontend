@@ -68,6 +68,7 @@ const TenantComplaint = () => {
                                         key={complaint.id}
                                         title={complaint.title}
                                         message={complaint.content}
+                                        status={complaint.active}
                                         from={
                                             landlord.name
                                         }

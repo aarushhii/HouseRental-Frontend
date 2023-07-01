@@ -29,6 +29,7 @@ const ComplaintPage = () => {
             .then((res) => res.json())
             .then((d) => setTenant(d));
     };
+
     const findTenantById = (id) => {
         return tenant.find((tenantObj) => tenantObj.id === id);
     };
@@ -51,15 +52,17 @@ const ComplaintPage = () => {
                     <div className="complaints-page">
                         <div className="tabs">
                             <button
-                                className={`tab ${activeTab === "incoming" ? "active" : ""
-                                    }`}
+                                className={`tab ${
+                                    activeTab === "incoming" ? "active" : ""
+                                }`}
                                 onClick={() => handleTabClick("incoming")}
                             >
                                 Incoming
                             </button>
                             <button
-                                className={`tab ${activeTab === "outgoing" ? "active" : ""
-                                    }`}
+                                className={`tab ${
+                                    activeTab === "outgoing" ? "active" : ""
+                                }`}
                                 onClick={() => handleTabClick("outgoing")}
                             >
                                 Outgoing
@@ -69,30 +72,43 @@ const ComplaintPage = () => {
                             {activeTab === "incoming" &&
                                 data.map((complaint) =>
                                     complaint.to === user.id &&
-                                        findTenantById(complaint.from) ? (
-                                        <ComplaintCard
-                                            key={complaint.id}
-                                            title={complaint.title}
-                                            message={complaint.content}
-                                            status={complaint.isActive}
-                                            from={
-                                                findTenantById(complaint.from).name
-                                            }
-                                            to={user.name}
-                                        />
+                                    findTenantById(complaint.from) ? (
+                                        <>
+                                            status - {complaint.isActive}
+                                            <ComplaintCard
+                                                key={complaint.id}
+                                                complaintId={complaint.id}
+                                                title={complaint.title}
+                                                message={complaint.content}
+                                                status={complaint.isActive}
+                                                from={
+                                                    findTenantById(
+                                                        complaint.from
+                                                    ).name
+                                                }
+                                                to={user.name}
+                                            />
+                                        </>
                                     ) : null
                                 )}
                             {activeTab === "outgoing" &&
                                 data.map((complaint) =>
                                     complaint.from === user.id &&
-                                        findTenantById(complaint.to) ? (
-                                        <ComplaintCard
-                                            key={complaint.id}
-                                            title={complaint.title}
-                                            message={complaint.content}
-                                            from={user.name}
-                                            to={findTenantById(complaint.to).name}
-                                        />
+                                    findTenantById(complaint.to) ? (
+                                        <>
+                                            <ComplaintCard
+                                                key={complaint.id}
+                                                complaintId={complaint.id}
+                                                title={complaint.title}
+                                                message={complaint.content}
+                                                status={complaint.active}
+                                                from={user.name}
+                                                to={
+                                                    findTenantById(complaint.to)
+                                                        .name
+                                                }
+                                            />
+                                        </>
                                     ) : null
                                 )}
                         </div>
