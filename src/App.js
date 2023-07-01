@@ -13,6 +13,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Dashboard from './pages/Dashboard/Dashboard';
 import TenantDashboard from "./pages/Dashboard/tenantDashboard";
 import TenantComplaint from './pages/Complaint/tenantComplaint';
+import NotLoggedIn from './components/NotLoggedin/NotLoggedIn';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                       <Route path="/complaints" element={<ComplaintsPage />} />
                       <Route path="/tenant/complaints" element={<TenantComplaint />} />
                       <Route path="/addproperty" element={<AddProperty />} />
+                      <Route path="/loggedout" element={<NotLoggedIn />} />
                       <Route
                           path="/raisecomplaint"
                           element={<RaiseComplaint />}
