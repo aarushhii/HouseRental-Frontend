@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import NavBar from '../../../components/NavBar-Main/Navbar';
 import { useEffect } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthContext';
 
 const RaiseComplaint = ({ landlordId,tenantId }) => {
+
+    const {user,tenantUser} = useContext(AuthContext)
+
   const [data, setData] = useState({
     title:"",
     message:"",
@@ -54,7 +58,8 @@ const RaiseComplaint = ({ landlordId,tenantId }) => {
     const dataJson = await response.json();
     console.log(dataJson);
     setData({ title: "", content: "", to: "", from: "", active: "" });
-    navigate("/complaints");
+    if(user) navigate("/complaints");
+    else navigate("/tenant/complaints");
 };
 
   return (

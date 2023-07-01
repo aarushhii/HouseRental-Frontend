@@ -38,7 +38,6 @@ const ComplaintCard = ({ complaintId, title, message, status, from, to }) => {
                 )}
             </div>
             <div className="card-body">
-                id-{complaintId}
                 <div className="metadata">
                     <div className="metadata">
                         <span>From:</span>
