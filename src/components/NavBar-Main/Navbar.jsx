@@ -6,52 +6,53 @@ import './NavBar.css'; // Import the CSS file for NavBar styles
 import { AuthContext } from '../../context/AuthContext';
 
 const NavBar = () => {
-    const {user,logout , tenantUser, tenantLogout}=useContext(AuthContext);
+    const { user, logout, tenantUser, tenantLogout } = useContext(AuthContext);
 
-    const handleLogout = () =>{
+    const handleLogout = () => {
         logout();
     }
-    const handleTenantLogout = () =>{
+    const handleTenantLogout = () => {
         tenantLogout();
     }
 
-     if (user) {
+    if (user) {
         return (
 
-        <Navbar expand="lg" className="slim-navbar">
-            <Navbar.Brand href="/dashboard">
-                <img
-                    src={Logo}
-                    width="150"
-                    height="0"
-                    className="d-inline-block align-top"
-                    alt="Logo"
-                />
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto">
-                <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-                <Nav.Link href="/property">Property</Nav.Link>
-                    <Nav.Link href="/complaints">Complaint</Nav.Link>
-                    <NavDropdown 
-                    title={<div>
-                            <img src={Profile} alt="Profile" width="40" />
-                            <span className="profile-name">{user.name}</span>
-                        </div>} 
-                    id="basic-nav-dropdown" 
-                    alignRight 
-                    className="profile-dropdown">
-                        <NavDropdown.Item href="/addProperty">Add Property</NavDropdown.Item>
-                        <NavDropdown.Item href="/raiseComplaint">Raise Complaint</NavDropdown.Item>
-                        <NavDropdown.Item href="/reset-password">Reset Password</NavDropdown.Item>
-                        <NavDropdown.Item><button onClick={handleLogout} className='btn btn-danger'>Logout</button></NavDropdown.Item>
-                    </NavDropdown>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
-    );}
-    else if(tenantUser){
+            <Navbar expand="lg" className="slim-navbar">
+                <Navbar.Brand href="/dashboard">
+                    <img
+                        src={Logo}
+                        width="150"
+                        height="0"
+                        className="d-inline-block align-top"
+                        alt="Logo"
+                    />
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ml-auto">
+                        <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                        <Nav.Link href="/property">Property</Nav.Link>
+                        <Nav.Link href="/complaints">Complaint</Nav.Link>
+                        <NavDropdown
+                            title={<div>
+                                <img src={Profile} alt="Profile" width="40" />
+                                <span className="profile-name">{user.name}</span>
+                            </div>}
+                            id="basic-nav-dropdown"
+                            alignRight
+                            className="profile-dropdown">
+                            <NavDropdown.Item href="/addProperty">Add Property</NavDropdown.Item>
+                            {/* <NavDropdown.Item href="/raiseComplaint">Raise Complaint</NavDropdown.Item> */}
+                            <NavDropdown.Item href="/reset-password">Reset Password</NavDropdown.Item>
+                            <NavDropdown.Item><button onClick={handleLogout} className='btn btn-danger'>Logout</button></NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        );
+    }
+    else if (tenantUser) {
         return (
             <Navbar expand="lg" className="slim-navbar">
                 <Navbar.Brand href="/dashboard">
@@ -66,6 +67,7 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
+                    <Nav.Link href="/complaints">Complaint</Nav.Link>
                         <NavDropdown
                             title={
                                 <div>
@@ -83,9 +85,9 @@ const NavBar = () => {
                             alignRight
                             className="profile-dropdown"
                         >
-                            <NavDropdown.Item href="/raiseComplaint">
+                            {/* <NavDropdown.Item href="/raiseComplaint">
                                 Raise Complaint
-                            </NavDropdown.Item>
+                            </NavDropdown.Item> */}
                             <NavDropdown.Item href="/reset-password">
                                 Reset Password
                             </NavDropdown.Item>
@@ -103,7 +105,7 @@ const NavBar = () => {
             </Navbar>
         );
     }
-    else{
+    else {
         return (
             <Navbar expand="lg" className="slim-navbar">
                 <Navbar.Brand href="/dashboard">

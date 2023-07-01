@@ -1,7 +1,14 @@
 import React from "react";
 import NavBar from "../../components/NavBar-Main/Navbar";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import LandLord from '../../Assets/LandLord.png';
+import PropertyImg from '../../Assets/PropertyImg.png';
+import { FaUser, FaHome } from 'react-icons/fa';
+import './tenantDash.css';
+import { useNavigate } from "react-router-dom";
+
 
 const TenantDashboard = () => {
     const { tenantUser, tenantLogout } = useContext(AuthContext);
@@ -10,16 +17,108 @@ const TenantDashboard = () => {
         tenantLogout();
     };
 
+    const navigate = useNavigate();
+    const [data, setData] = useState([]);
+    const [propertyDet, setProperty] = useState([]);
+
+    const fetchInfo = () => {
+        let apiUrl = `https://houserentalapi-production.up.railway.app/api/property/${tenantUser.propertyId}`;
+        return fetch(apiUrl, {
+            method: "GET",
+        })
+            .then((res) => res.json())
+            .then((d) => setProperty(d));
+    };
+
+    const fetchLandLord = () => {
+        let apiUrl = `https://houserentalapi-production.up.railway.app/api/landlord/${tenantUser.landlordId}`;
+        return fetch(apiUrl, {
+            method: "GET",
+        })
+            .then((res) => res.json())
+            .then((d) => setData(d));
+    };
+
+
+    const handleAddComplaint = (e) => {
+        e.preventDefault();
+        navigate("/raiseComplaint", { state: { to: tenantUser.landlordId, from: tenantUser.id } });
+    }
+
+    useEffect(() => {
+        fetchInfo();
+        fetchLandLord();
+    }, []);
     if (tenantUser) {
         return (
             <div>
                 <NavBar />
-                <div>tenantDashboard</div>
-                <div>{tenantUser.id}</div>
-                <div>{tenantUser.name}</div>
-                <div>{tenantUser.email}</div>
-                <div>{tenantUser.password}</div>
-                <div>{tenantUser.phone}</div>
+                <h2 className="px-5 pt-5">DashBoard</h2>
+                <div className="container-fluid bg-light py-5">
+                    <div className="row justify-content-center">
+                        <div className="col-lg-6 mb-4">
+                            <div className="card border-0 shadow">
+                                {/* <img src={LandLord} className="card-img-top" alt="Landlord" /> */}
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        <FaUser className="icon" />
+                                        Landlord Details</h5>
+                                    <hr className="my-4" />
+                                    <div className="mb-3">
+                                        <label className="form-label">Name</label>
+                                        <p>{data.name}</p>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">Email</label>
+                                        <p>{data.email}</p>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">Phone</label>
+                                        <p>{data.phone}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-lg-6">
+                            <div className="card border-0 shadow">
+                                {/* <img src={PropertyImg} className="card-img-top" alt="Property" /> */}
+
+                                <div className="card-body" >
+                                    <h5 className="card-title">
+                                        <FaHome className="icon" />
+                                        Property Details</h5>
+                                    <hr className="my-4" />
+
+                                    <div className="mb-3">
+                                        <label className="form-label">Name</label>
+                                        <p>{propertyDet.name}</p>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">Type</label>
+                                        <p>{propertyDet.type}</p>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">Rent</label>
+                                        <p>{propertyDet.rent}</p>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">City</label>
+                                        <p>{propertyDet.city}</p>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label className="form-label">Address</label>
+                                        <p>{propertyDet.address}</p>
+                                    </div>
+                                    <button className="btn btn-warning" onClick={(e) =>
+                                        handleAddComplaint(e)
+                                    }>Raise Complaint</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     } else {
@@ -28,3 +127,5 @@ const TenantDashboard = () => {
 };
 
 export default TenantDashboard;
+
+

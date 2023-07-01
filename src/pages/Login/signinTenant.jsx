@@ -64,7 +64,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Landlord Log in
+            Tenant Login
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -100,11 +100,11 @@ export default function SignIn() {
               <Grid item xs>
                 
               </Grid>
-              <Grid item>
+              {/* <Grid item>
                 <Link to="/signup" >
                   {"Don't have an account? Sign Up"}
                 </Link>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Box>
         </Box>
