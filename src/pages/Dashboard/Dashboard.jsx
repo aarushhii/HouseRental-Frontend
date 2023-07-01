@@ -19,7 +19,12 @@ function Dashboard() {
             method: "GET",
         })
             .then((res) => res.json())
-            .then((d) => setProperty(d));
+            .then((d) => setProperty(d))
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                // Retry after a delay
+                setTimeout(fetchProperty, 2000); // Retry after 2 seconds
+            });
     }
 
     const fetchTenant = async () => {

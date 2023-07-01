@@ -16,7 +16,12 @@ const TenantComplaint = () => {
             method: "GET",
         })
             .then((res) => res.json())
-            .then((d) => setData(d));
+            .then((d) => setData(d))
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                // Retry after a delay
+                setTimeout(fetchInfo, 2000); // Retry after 2 seconds
+            });
     };
     const fetchLandLord = () => {
         let apiUrl = `https://houserentalapi-production.up.railway.app/api/landlord/${tenantUser.landlordId}`;
@@ -24,7 +29,7 @@ const TenantComplaint = () => {
             method: "GET",
         })
             .then((res) => res.json())
-            .then((d) => setLandlord(d));
+            .then((d) => setLandlord(d))
     };
 
     const handleTabClick = (tab) => {

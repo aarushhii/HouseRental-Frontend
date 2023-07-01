@@ -27,7 +27,12 @@ const TenantDashboard = () => {
             method: "GET",
         })
             .then((res) => res.json())
-            .then((d) => setProperty(d));
+            .then((d) => setProperty(d))
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                // Retry after a delay
+                setTimeout(fetchInfo, 2000); // Retry after 2 seconds
+            });
     };
 
     const fetchLandLord = () => {
@@ -53,8 +58,8 @@ const TenantDashboard = () => {
         return (
             <div>
                 <NavBar />
-                <h2 className="px-5 pt-5">DashBoard</h2>
-                <div className="container-fluid bg-light py-5">
+                <div className="container-fluid bg-light py-3">
+                    <h1 className="fw-bold ms-5 my-4">Dashboard</h1>
                     <div className="row justify-content-center gx-0">
                         <div className="col-lg-6">
                             <div className="row">

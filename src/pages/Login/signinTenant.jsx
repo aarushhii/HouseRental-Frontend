@@ -12,104 +12,68 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link to="/">
-        Home
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-// TODO remove, this demo shouldn't need to reset the theme.
-
-const defaultTheme = createTheme();
+import { useState } from 'react';
 
 export default function SignIn() {
   
-  const {tenantLogin} = useContext(AuthContext);
+  const { tenantLogin } = useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    const data = new FormData(event.currentTarget);
-    
-    const userData = {
-        email: data.get("email"),
-        password: data.get("password"),
-    };
+      event.preventDefault();
 
-    tenantLogin(userData);
+      const userData = {
+          email,
+          password,
+      };
+
+      tenantLogin(userData);
   };
 
+
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Tenant Login
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                
-              </Grid>
-              {/* <Grid item>
-                <Link to="/signup" >
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid> */}
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </ThemeProvider>
+      <div>
+          <div className="mx-auto w-50 p-5 border border-3 mt-5">
+              <h2 className="text-center fw-semibold mb-5">Sign Up</h2>
+              <form onSubmit={handleSubmit}>
+                  <div class="form-floating mb-3">
+                      <input
+                          type="email"
+                          class="form-control"
+                          id="email"
+                          name="email"
+                          onChange={(event) => setEmail(event.target.value)}
+                          placeholder="name@example.com"
+                          required
+                      />
+                      <label for="name">Email</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                      <input
+                          type="password"
+                          class="form-control"
+                          id="password"
+                          name="password"
+                          onChange={(event) => setPassword(event.target.value)}
+                          placeholder="name@example.com"
+                          required
+                      />
+                      <label for="name">Password</label>
+                  </div>
+                  <div className="form-group">
+                      <button
+                          type="submit"
+                          className="btn btn-primary btn-block"
+                      >
+                          Sign In
+                      </button>
+                  </div>
+                  <div className="text-center">
+                      Dont have an account? <Link to="/signup">Sign up</Link>
+                  </div>
+              </form>
+          </div>
+      </div>
   );
 }

@@ -19,7 +19,12 @@ const Property = () => {
             method: "GET",
         })
             .then((res) => res.json())
-            .then((d) => setData(d));
+            .then((d) => setData(d))
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+                // Retry after a delay
+                setTimeout(fetchInfo, 2000); // Retry after 2 seconds
+            });
     };
 
     const fetchTenant = () => {
