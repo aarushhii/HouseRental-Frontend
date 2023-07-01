@@ -27,7 +27,6 @@
 }
 
 
-
 .tabs {
   display: flex;
   justify-content: center; /* Center align tabs */
@@ -56,10 +55,10 @@
   background-color: #f0f0f0;
 }
 
-.complaints-container {
+/* .complaints-container {
   display: grid;
   grid-gap: 16px;
-}
+} */
 
 .complaint-card {
   border: 1px solid #ccc;
@@ -80,7 +79,7 @@
 .card-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: left;
   margin-bottom: 12px;
 }
 
@@ -134,3 +133,4 @@
   overflow: auto;
 
 }
+

@@ -12,6 +12,7 @@ import AddTenant from "./pages/Forms/AddTenant/addTenant";
 import { AuthProvider } from "./context/AuthContext";
 import Dashboard from './pages/Dashboard/Dashboard';
 import TenantDashboard from "./pages/Dashboard/tenantDashboard";
+import TenantComplaint from './pages/Complaint/tenantComplaint';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
                       <Route path="/tenant/signin" element={<SigninTenant />} />
                       <Route path="/property" element={<Property />} />
                       <Route path="/complaints" element={<ComplaintsPage />} />
+                      <Route path="/tenant/complaints" element={<TenantComplaint />} />
                       <Route path="/addproperty" element={<AddProperty />} />
                       <Route
                           path="/raisecomplaint"

@@ -3,6 +3,7 @@ import "./ComplaintsPage.css";
 import ComplaintCard from "../../components/ComplaintCard";
 import NavBar from "../../components/NavBar-Main/Navbar";
 import { AuthContext } from "../../context/AuthContext";
+import NotLoggedIn from "../../components/NotLoggedin/NotLoggedIn";
 
 const ComplaintPage = () => {
     const [activeTab, setActiveTab] = useState("incoming");
@@ -18,6 +19,8 @@ const ComplaintPage = () => {
             .then((res) => res.json())
             .then((d) => setData(d));
     };
+
+    
     const fetchTenant = () => {
         let apiUrl = `https://houserentalapi-production.up.railway.app/api/tenant/getall`;
         return fetch(apiUrl, {
@@ -71,6 +74,7 @@ const ComplaintPage = () => {
                                             key={complaint.id}
                                             title={complaint.title}
                                             message={complaint.content}
+                                            status={complaint.isActive}
                                             from={
                                                 findTenantById(complaint.from).name
                                             }
@@ -97,63 +101,8 @@ const ComplaintPage = () => {
             </div>
         );
     }
-    else if(tenantUser) {
-        return (
-            <div>
-                <NavBar />
-                <div className="main-content">
-                    <h2 className="px-5 pt-5">Complaints</h2>
-                    <div className="complaints-page">
-                        <div className="tabs">
-                            <button
-                                className={`tab ${activeTab === "incoming" ? "active" : ""
-                                    }`}
-                                onClick={() => handleTabClick("incoming")}
-                            >
-                                Incoming
-                            </button>
-                            <button
-                                className={`tab ${activeTab === "outgoing" ? "active" : ""
-                                    }`}
-                                onClick={() => handleTabClick("outgoing")}
-                            >
-                                Outgoing
-                            </button>
-                        </div>
-                        <div className="complaints-container">
-                            {activeTab === "incoming" &&
-                                data.map((complaint) =>
-                                    complaint.to === tenantUser.id &&
-                                        findTenantById(complaint.to) ? (
-                                        <ComplaintCard
-                                            key={complaint.id}
-                                            title={complaint.title}
-                                            message={complaint.content}
-                                            from={
-                                                findTenantById(complaint.to).name
-                                            }
-                                            to={tenantUser.name}
-                                        />
-                                    ) : null
-                                )}
-                            {activeTab === "outgoing" &&
-                                data.map((complaint) =>
-                                    complaint.from === tenantUser.id &&
-                                        findTenantById(complaint.from) ? (
-                                        <ComplaintCard
-                                            key={complaint.id}
-                                            title={complaint.title}
-                                            message={complaint.content}
-                                            from={tenantUser.name}
-                                            to={findTenantById(complaint.from).name}
-                                        />
-                                    ) : null
-                                )}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
+    else{
+        <NotLoggedIn/>
     }
 };
 

@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LandLord from '../../Assets/LandLord.png';
 import PropertyImg from '../../Assets/PropertyImg.png';
-import { FaUser, FaHome } from 'react-icons/fa';
+import { FaUser, FaHome, FaMoneyBillAlt } from 'react-icons/fa';
 import './tenantDash.css';
 import { useNavigate } from "react-router-dom";
 
@@ -55,32 +55,54 @@ const TenantDashboard = () => {
                 <NavBar />
                 <h2 className="px-5 pt-5">DashBoard</h2>
                 <div className="container-fluid bg-light py-5">
-                    <div className="row justify-content-center">
-                        <div className="col-lg-6 mb-4">
-                            <div className="card border-0 shadow">
-                                {/* <img src={LandLord} className="card-img-top" alt="Landlord" /> */}
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        <FaUser className="icon" />
-                                        Landlord Details</h5>
-                                    <hr className="my-4" />
-                                    <div className="mb-3">
-                                        <label className="form-label">Name</label>
-                                        <p>{data.name}</p>
+                    <div className="row justify-content-center gx-0">
+                        <div className="col-lg-6">
+                            <div className="row">
+                                <div className="col-lg-6 mb-4">
+                                    <div className="card border-0 shadow">
+                                        <div className="card-body">
+                                            <h5 className="card-title">
+                                                <FaMoneyBillAlt className="icon" />
+                                                <span>Rent Due</span>
+                                            </h5>
+                                            <hr className="my-4" />
+                                            {tenantUser.rentPaid ? (
+                                                <p className="text-success">Rent is up to date</p>
+                                            ) : (
+                                                <p className="text-danger">Rent due: {tenantUser.rentDue}</p>
+                                            )}
+                                        </div>
                                     </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">Email</label>
-                                        <p>{data.email}</p>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">Phone</label>
-                                        <p>{data.phone}</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-lg-6 mb-4">
+                                    <div className="card border-0 shadow">
+                                        {/* <img src={LandLord} className="card-img-top" alt="Landlord" /> */}
+                                        <div className="card-body">
+                                            <h5 className="card-title">
+                                                <FaUser className="icon" />
+                                                Landlord Details</h5>
+                                            <hr className="my-4" />
+                                            <div className="mb-3">
+                                                <label className="form-label">Name</label>
+                                                <p>{data.name}</p>
+                                            </div>
+                                            <div className="mb-3">
+                                                <label className="form-label">Email</label>
+                                                <p>{data.email}</p>
+                                            </div>
+                                            <div className="mb-3">
+                                                <label className="form-label">Phone</label>
+                                                <p>{data.phone}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="col-lg-6">
+                        <div className="col-lg-4">
                             <div className="card border-0 shadow">
                                 {/* <img src={PropertyImg} className="card-img-top" alt="Property" /> */}
 
@@ -117,6 +139,7 @@ const TenantDashboard = () => {
 
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

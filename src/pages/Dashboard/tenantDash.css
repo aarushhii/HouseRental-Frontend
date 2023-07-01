@@ -6,7 +6,7 @@
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
   }
   .card:hover {
     transform: scale(1.02);
