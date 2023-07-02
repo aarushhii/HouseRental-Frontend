@@ -1,10 +1,16 @@
 import NavBar from "../../components/NavBar-Main/Navbar";
 import React from 'react'
-import '../../App.css';
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useState } from "react";
 import { useEffect } from "react";
+import { FaHouseCircleCheck, FaPeopleRoof, FaMoneyBillTransfer, FaHouseCircleXmark, FaMoneyBills } from "react-icons/fa6";
+import "./Dashboard.css";
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import "./Dashboard.css"
 
 function Dashboard() {
 
@@ -54,69 +60,98 @@ function Dashboard() {
         <div>
             <NavBar />
             <>
-                <h2 className="px-5 pt-5">Dashboard</h2>
+            <h2 className='text-center my-5'>Dashboard</h2>
 
                 <div className="row px-5 gx-10">
-                    <div className="col-sm-12 col-md-6 col-lg-4 lg-3 my-3">
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">Tenants</h5>
-                                <h4 className="text-success">
-                                    {Object.keys(tenant).length}
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
+                    <Container style={{ padding: 0 }}>
+                        <Row >
+                            <Col style={{paddingRight:'450px' }}>
+                                <Card style={{width: '25rem', backgroundColor: "#FA8072"}}>
 
-                    <div className="col-sm-12 col-md-6 col-lg-4 mb-3 my-3">
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">Houses</h5>
-                                <h4 className="text-success">
-                                    {Object.keys(property).length}
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
+                                    <Card.Body>
+                                        <div className="icon ms-auto">
+                                            <FaPeopleRoof size={50} marginLeft={40} className="icon justify-content-center align-items-center ml-auto" />
+                                        </div>
+                                        <Card.Title style={{ color: 'white' }}>Tenants</Card.Title>
+                                        <h4 className="number">
+                                            {Object.keys(tenant).length}
+                                        </h4>
 
-                    <div className="col-sm-12 col-md-6 col-lg-4 mb-3 my-3">
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">Payments Left</h5>
-                                <h4 className="text-success">{rentLeft}</h4>
-                            </div>
-                        </div>
-                    </div>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                            <Col style={{paddingRight:'450px' }}>
+                                <Card style={{width: '25rem', backgroundColor: "#00CED1"}}>
 
-                    <div className="col-sm-12 col-md-6 col-lg-4 mb-3 my-3">
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">Unpaid Rent</h5>
-                                <h4 className="text-success">
-                                    {
-                                        Object.values(tenant).filter(
-                                            (tenant) => !tenant.rentPaid
-                                        ).length
-                                    }
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
+                                    <Card.Body>
+                                        <div className="icon ms-auto">
+                                            <FaHouseCircleCheck size={50} marginLeft={40} className="icon justify-content-center align-items-center ml-auto" />
+                                        </div>
+                                        <Card.Title style={{ color: 'white' }}>Houses</Card.Title>
+                                        <h4 className="number">
+                                            {Object.keys(property).length}
+                                        </h4>
 
-                    <div className="col-sm-12 col-md-6 col-lg-4 mb-3 my-3">
-                        <div className="card">
-                            <div className="card-body">
-                                <h5 className="card-title">Vacanices</h5>
-                                <h4 className="text-success">
-                                    {
-                                        Object.values(property).filter(
-                                            (property) => !property.tenantId
-                                        ).length
-                                    }
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                            <Col style={{paddingRight:'450px' }}>
+                                <Card style={{ width: '25rem', backgroundColor: "#F4A460" }}>
+
+                                    <Card.Body>
+                                        <div className="icon ms-auto">
+                                            <FaMoneyBillTransfer size={50} marginLeft={40} className="icon justify-content-center align-items-center ml-auto" />
+                                        </div>
+                                        <Card.Title style={{ color: 'white' }}>Payments Left</Card.Title>
+                                        <h4 className="number">{rentLeft}</h4>
+
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Container>
+                    <Container>
+                        <Row>
+                            <Col style={{paddingRight:'450px' }}>
+                                <Card style={{ width: '25rem', backgroundColor: "#9370DB" }}>
+
+                                    <Card.Body>
+                                        <div className="icon ms-auto">
+                                            <FaMoneyBills size={50} marginLeft={40} className="icon justify-content-center align-items-center ml-auto" />
+                                        </div>
+                                        <Card.Title style={{ color: 'white' }}>Unpaid Rent</Card.Title>
+                                        <h4 className="number">
+                                            {
+                                                Object.values(tenant).filter(
+                                                    (tenant) => !tenant.rentPaid
+                                                ).length
+                                            }
+                                        </h4>
+
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                            <Col style={{paddingRight:'450px' }}>
+                                <Card style={{ width: '25rem', backgroundColor: "#00BFFF" }}>
+
+                                    <Card.Body>
+                                        <div className="icon ms-auto">
+                                            <FaHouseCircleXmark size={50} marginLeft={40} className="icon justify-content-center align-items-center ml-auto" />
+                                        </div>
+                                        <Card.Title style={{ color: 'white' }}>Vacanices</Card.Title>
+                                        <h4 className="number">
+                                            {
+                                                Object.values(property).filter(
+                                                    (property) => !property.tenantId
+                                                ).length
+                                            }
+                                        </h4>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Container>
+
                 </div>
             </>
         </div>

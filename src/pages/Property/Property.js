@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useContext,useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const Property = () => {
 
     const [data, setData] = useState([]);

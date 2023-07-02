@@ -5,6 +5,7 @@
   text-decoration: none;
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
+  padding-bottom: 0;
 }
 
 .container{
@@ -19,19 +20,7 @@ main{
   width: 100%;
   padding: 0px;
 }
-.sidebar{
-  background: #000;
-  color: #fff;
-  height: 100vh;
-  width: 300px;
-  transition: all 0.5s;
-  margin-left: 0;
-}
-.top_section{
-  display: flex;
-  align-items:center;
-  padding:20px 15px;
-}
+
 .logo{
   font-size: 20px;
 }

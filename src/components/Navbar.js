@@ -40,8 +40,8 @@ const Navbar = () => {
       </div>
       <div className="navbar-links-container">
       
-        <Link to='/signin'><button className="primary-button" >Sign in</button></Link>
-        <Link to='/signup'><button className="button">Sign up</button> </Link>
+        <Link to='/signin' style={{color:'#003466'}}>Sign in as Landlord</Link>
+        <Link to='/signup'  style={{color:'#003466'}}>Sign in as Tentant</Link>
       </div>
       <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
