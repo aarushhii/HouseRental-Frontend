@@ -59,7 +59,7 @@ const Property = () => {
     }
     const handlePayRent = (e, tenantId) => {
         e.preventDefault();
-        let apiUrl = `https://houserentalapi-production.up.railway.app/api/tenant/paid/${tenantId}`;
+        let apiUrl = `http://localhost:8080/api/tenant/paid/${tenantId}`;
         return fetch(apiUrl, {
             method: "POST",
         })
@@ -111,7 +111,7 @@ const Property = () => {
                                             )}
                                         </div>
                                         <div className="card-body">
-                                            <h4 className="card-title fw-bold">
+                                            <h4 className="card-title text-black fw-bold">
                                                 {dataObj.name
                                                     .charAt(0)
                                                     .toUpperCase() +

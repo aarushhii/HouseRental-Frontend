@@ -105,7 +105,7 @@ const AddTenant = ({ propertyId, landlordId }) => {
                   </div>
                   <div class="form-floating mb-3">
                       <input
-                          type="text"
+                          type="password"
                           class="form-control"
                           id="password"
                           name="password"
