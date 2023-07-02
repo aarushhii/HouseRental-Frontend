@@ -79,7 +79,6 @@ const ComplaintPage = () => {
                                     complaint.to === user.id &&
                                     findTenantById(complaint.from) ? (
                                         <>
-                                            status - {complaint.isActive}
                                             <ComplaintCard
                                                 key={complaint.id}
                                                 complaintId={complaint.id}
