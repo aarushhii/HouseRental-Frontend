@@ -1,0 +1,11 @@
+.icon{
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding-bottom: 10px;
+}
+.card h4,
+.card-title,
+.text {
+  color: white;
+}
