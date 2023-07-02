@@ -41,7 +41,7 @@ const Navbar = () => {
       <div className="navbar-links-container">
       
         <Link to='/signin' style={{color:'#003466'}}>Sign in as Landlord</Link>
-        <Link to='/signup'  style={{color:'#003466'}}>Sign in as Tentant</Link>
+        <Link to='/tenant/signin'  style={{color:'#003466'}}>Sign in as Tentant</Link>
       </div>
       <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />
