@@ -5,8 +5,8 @@
 A House Rental Management Application, which helps landlords and tenants mangage their rental properties. It apps features dedicated accounts and dashboard for tenants and landlords which displays all the necessary information like Rent Due, Rent Paid, Maintenance Requests, etc. 
 
 ## Deployed Link
-- RentSure Frontend - 
-- RentSure Backend API - 
+- RentSure Frontend - https://rent-sure.vercel.app/
+- RentSure Backend API - https://houserentalapi-production.up.railway.app/
 
 ## Features
 - User Authentication
