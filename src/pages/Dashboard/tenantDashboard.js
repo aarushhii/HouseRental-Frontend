@@ -20,6 +20,7 @@ const TenantDashboard = () => {
     const navigate = useNavigate();
     const [data, setData] = useState([]);
     const [propertyDet, setProperty] = useState([]);
+    const [tenant, setTenant] = useState([]);
 
     const fetchInfo = () => {
         let apiUrl = `https://houserentalapi-production.up.railway.app/api/property/${tenantUser.propertyId}`;
@@ -44,6 +45,15 @@ const TenantDashboard = () => {
             .then((d) => setData(d));
     };
 
+    const fetchTenant = () => {
+        let apiUrl = `https://houserentalapi-production.up.railway.app/api/tenant/${tenantUser.id}`;
+        return fetch(apiUrl, {
+            method: "GET",
+        })
+            .then((res) => res.json())
+            .then((d) => setTenant(d));
+    };
+
 
     const handleAddComplaint = (e) => {
         e.preventDefault();
@@ -53,7 +63,8 @@ const TenantDashboard = () => {
     useEffect(() => {
         fetchInfo();
         fetchLandLord();
-    }, []);
+        fetchTenant();
+    }, [tenant.rentPaid]);
     if (tenantUser) {
         return (
             <div>
@@ -71,10 +82,10 @@ const TenantDashboard = () => {
                                                 <span>Rent Due</span>
                                             </h5>
                                             <hr className="my-4" />
-                                            {tenantUser.rentPaid ? (
+                                            {tenant.rentPaid ? (
                                                 <p className="text-success">Rent is up to date</p>
                                             ) : (
-                                                <p className="text-danger">Rent due: {tenantUser.rentDue}</p>
+                                                <p className="text-danger">Rent due: {tenant.rentDue}</p> 
                                             )}
                                         </div>
                                     </div>

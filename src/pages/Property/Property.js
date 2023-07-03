@@ -59,7 +59,7 @@ const Property = () => {
     }
     const handlePayRent = (e, tenantId) => {
         e.preventDefault();
-        let apiUrl = `http://localhost:8080/api/tenant/paid/${tenantId}`;
+        let apiUrl = `https://houserentalapi-production.up.railway.app/api/tenant/paid/${tenantId}`;
         return fetch(apiUrl, {
             method: "POST",
         })
