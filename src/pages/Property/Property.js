@@ -111,7 +111,7 @@ const Property = () => {
                                             )}
                                         </div>
                                         <div className="card-body">
-                                            <h4 className="card-title fw-bold">
+                                            <h4 className="card-title text-black fw-bold">
                                                 {dataObj.name
                                                     .charAt(0)
                                                     .toUpperCase() +

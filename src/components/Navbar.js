@@ -14,7 +14,6 @@ import ListItemText from "@mui/material/ListItemText";
 import { Link } from 'react-router-dom';
 // import { AuthContext } from "../context/AuthContext";
 
-
 const Navbar = () => {
    const [openMenu, setOpenMenu] = useState(false);
 

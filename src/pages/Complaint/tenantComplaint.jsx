@@ -91,6 +91,7 @@ const TenantComplaint = () => {
                                         message={complaint.content}
                                         from={tenantUser.name}
                                         to={landlord.name}
+                                        status={complaint.active}
                                     />
                                 ) : null
                             )}
